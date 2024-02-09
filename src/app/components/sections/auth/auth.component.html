@@ -1,0 +1,46 @@
+<h2 class="text-center bg-dark text-white py-3">Iniciar sesión</h2>
+<div class="fondo pt-3 pb-5 mb-5">
+    <div class="">
+      <div class="col-12 col-sm-8 col-md-4 m-auto">
+        <div class="card">
+          <div class="card-body">
+            <form class="row" [formGroup]="loginform">
+              <h3>Iniciar sesión</h3>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Correo electronico</label>
+                <input formControlName="username" type="email" class="form-control" id="exampleInputEmail1"
+                  aria-describedby="emailHelp">
+                <div class="ps-1" *ngIf="username.invalid && (username.dirty || username.touched)">
+                  <div *ngIf="username.errors?.['required']">
+                    <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes ingresar un correo electronico.</span>
+                    
+                  </div>      
+                  <div *ngIf="username.errors?.['email']">
+                    <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes ingresar un correo electronico valido.</span>
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+                <div class="ps-1" *ngIf="password.invalid && (password.dirty || password.touched)">
+                  <div *ngIf="password.errors?.['required']">
+                    <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes ingresar la contraseña.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="d-grid">
+                <button type="submit" (click)="login()" class="btn btn-primary mt-3">Ingresar</button>
+
+                <div class="mt-3 d-flex justify-content-between">
+                  <a routerLink="/register">Registrarse</a>
+                  <a routerLink="/recover-password" class="">Olvide contraseña</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

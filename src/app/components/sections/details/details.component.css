@@ -1,0 +1,11 @@
+p{
+    margin-bottom: 5px;
+}
+.card{
+    background-color: rgb(250, 250, 250);
+    box-shadow: 1px 1px 5px rgb(140, 140, 140);
+    border-radius: 1px !important;
+}
+.fondo{
+    background-color: rgb(245, 245, 245);
+}

@@ -1,0 +1,109 @@
+<ngx-spinner 
+    bdColor         = "rgba(0, 0, 0, 1)" 
+    size            = "medium" 
+    color           = "#fff" 
+    type            = "square-jelly-box" 
+    [fullScreen]    = "true">
+    <p style="color: white" > Loading... </p>
+</ngx-spinner>
+
+<h2 class="text-center bg-dark text-white py-3">Crear publicación</h2>
+<div class="fondo">
+    <div class=" py-3">2
+        <div class="col-12 col-sm-8 col-md-6 m-auto pt-3 mb-5 pb-5">
+            <div class="card">
+                <div class="card-body">
+                    <form class="row g-3" [formGroup]="createPostform">
+                        <h3>{{titleOne}}</h3>
+                        <div class="col-md-12">
+                            <label for="" class="form-label">Titulo de la publicación.</label>
+                            <input formControlName="title" [(ngModel)]="post.title" type="text" [minlength]="8"
+                                maxlength="30" class="form-control" placeholder="" id="" value="">
+                            <div class="ps-1" *ngIf="title.invalid && (title.dirty || title.touched)">
+                                <div *ngIf="title.errors?.['required']">
+                                    <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes
+                                        ingresar un titulo.</span>
+                                </div>
+                                <div *ngIf="title.errors?.['minlength']">
+                                    <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes
+                                        ingresar mínimo 8 y máximo 30 caracteres.</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-12">
+                            <label for="" class="form-label">Descripción breve.</label>
+                            <div>
+                                <textarea formControlName="briefDescription" [(ngModel)]="post.briefDescription"
+                                    id="cuerpo-mensaje" rows="3" [minlength]="20" [maxlength]="215" class="form-control"
+                                    aria-label="With textarea"></textarea>
+                                <div class="ps-1"
+                                    *ngIf="briefDescription.invalid && (briefDescription.dirty || briefDescription.touched)">
+                                    <div *ngIf="briefDescription.errors?.['required']">
+                                        <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes
+                                            ingresar una descripcion breve.</span>
+                                    </div>
+                                    <div *ngIf="briefDescription.errors?.['minlength']">
+                                        <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes
+                                            ingresar mínimo 20 caracteres.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="">Categoria</label>
+                            <select formControlName="category" [(ngModel)]="post.category" class="form-select" id="">
+                                <option selected disabled value="">Seleccionar...</option>
+                                <option>Algo</option>
+                            </select>
+                            <div class="ps-1" *ngIf="category.invalid && (category.dirty || category.touched)">
+                                <div *ngIf="category.errors?.['required']">
+                                    <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes
+                                        seleccionar una categoría.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="">Región de la publicacion</label>
+                            <select formControlName="country" [(ngModel)]="post.region" class="form-select" id="">
+                                <option selected disabled value="">Seleccionar...</option>
+                                <option>Arica y Parinacota</option>
+                            </select>
+                            <div class="ps-1" *ngIf="country.invalid && (country.dirty || country.touched)">
+                                <div *ngIf="country.errors?.['required']">
+                                    <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes
+                                        seleccionar una región.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="" class="form-label">Descripcion completa y detallada.</label>
+                            <div>
+                                <textarea formControlName="detailedDescription" [(ngModel)]="post.detailedDescription"
+                                    ng-model="x" rows="10" id="detailedDescription" class="form-control"
+                                    [minlength]="40" maxlength="1500" aria-label="With textarea"></textarea>
+                                <div class="ps-1"
+                                    *ngIf="detailedDescription.invalid && (detailedDescription.dirty || detailedDescription.touched)">
+                                    <div *ngIf="detailedDescription.errors?.['required']">
+                                        <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes
+                                            escribir una descripcion detallada.</span>
+                                    </div>
+                                    <div *ngIf="detailedDescription.errors?.['minlength']">
+                                        <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes
+                                            ingresar mínimo 40 caracteres.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-12 d-grid mb-3">
+                            <button (click)="createPost()" class="btn btn-primary" type="submit">Crear
+                                publicación</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

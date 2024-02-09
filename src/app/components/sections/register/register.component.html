@@ -1,0 +1,135 @@
+<h2 class="text-center bg-dark text-white py-3">Crear cuenta</h2>
+<div class="fondo pt-3 pb-5 mb-5 ">
+    <div class="">
+        <div class="col-12 col-sm-8 col-md-5 m-auto">
+            <div class="card">
+                <div class="card-header"><h3>{{ title }}</h3></div>
+                <div class="card-body">
+                    <form  class="row g-3" [formGroup]="registerForm" (ngSubmit)="create()">
+                        <span><b>Todos los campos son obligatorios.</b></span>
+                        <div class="col-md-12">
+                            <label for="nombres" class="form-label">Nombres</label>
+                            <input type="text" formControlName="names" [(ngModel)]="user.names" class="form-control" [minlength]="3" maxlength="30"  name="names" value="" required minlength="3" >                          
+                            <div class="ps-1" *ngIf="names.invalid && (names.dirty || names.touched)">
+                            <div *ngIf="names.errors?.['required']">
+                                <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes ingresar tu(s) nombre(s).</span>   
+                              </div>   
+                              <div *ngIf="names.errors?.['minlength']">
+                                <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes ingresar mínimo 3 y máximo 30 caracteres.</span>   
+                              </div>     
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Apellido paterno</label>
+                            <input type="text" formControlName="paternalSurname" [(ngModel)]="user.paternalSurname" [minlength]="3" maxlength="20" class="form-control" name="apellidoPaterno" id="" value="" required minlength="3" >
+                            <div class="ps-1" *ngIf="paternalSurname.invalid && (paternalSurname.dirty || paternalSurname.touched)">
+                            <div *ngIf="paternalSurname.errors?.['required']">
+                                <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes ingresar tu apellido paterno.</span>   
+                              </div>   
+                              <div *ngIf="paternalSurname.errors?.['minlength']">
+                                <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes ingresar mínimo 3 y máximo 20 caracteres.</span>   
+                              </div>     
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Apellido materno</label>
+                            <input type="text" formControlName="maternalSurname" [(ngModel)]="user.maternalSurname" class="form-control" name="apellidoMaterno" id="" value="" required minlength="3" >
+                            <div class="ps-1" *ngIf="maternalSurname.invalid && (maternalSurname.dirty || maternalSurname.touched)">
+                            <div *ngIf="maternalSurname.errors?.['required']">
+                                <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes ingresar tu apellido materno.</span>   
+                              </div>   
+                              <div *ngIf="maternalSurname.errors?.['minlength']">
+                                <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes ingresar mínimo 3 y máximo 20 caracteres.</span>   
+                              </div>   
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Fecha de nacimiento</label>
+                            <input type="date" formControlName="birthDate" [(ngModel)]="user.birthDate"  min="1920-12-31" max="2005-12-31" class="form-control" name="fechaNacimientod" value="" required >
+                            <div class="ps-1" *ngIf="birthDate.invalid && (birthDate.dirty || birthDate.touched)">
+                            <div *ngIf="birthDate.errors?.['required']">
+                                <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes seleccionar tu fecha de nacimiento.</span>   
+                              </div>     
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Número telefónico</label>
+                            <input type="tel" formControlName="phone" [(ngModel)]="user.phone" class="form-control" [minlength]="8" maxlength="14" name="phone" id="phone" value="" required>
+                            <div class="ps-1" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                            <div *ngIf="phone.errors?.['required']">
+                                <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes ingresar tu número celular.</span>   
+                              </div>   
+                              <div *ngIf="phone.errors?.['minlength']">
+                                <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes ingresar mínimo 8 y máximo 14 caracteres.</span>   
+                              </div>   
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="" class="mb-2">Región de residencia</label>
+                            <select class="form-select" formControlName="region" [(ngModel)]="user.region" id="region" name="region" required >
+                                <option  selected disabled value="" >Seleccionar región...</option>
+                                <option >Metropolitana</option>
+                            </select>
+                            <div class="ps-1" *ngIf="region.invalid && (region.dirty || region.touched)">
+                            <div *ngIf="region.errors?.['required']">
+                                <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes seleccionar tu región de residencia.</span>   
+                              </div>   
+                            </div>
+                           
+                        </div>
+                        <div class="col-md-12">
+                            <label for="" class="form-label">Correo electronico</label>
+                            <input type="email" formControlName="email" [(ngModel)]="user.email" class="form-control" name="email" id="email" value="" required email="true">
+                            <div class="ps-1" *ngIf="email.invalid && (email.dirty || email.touched)">
+                            <div *ngIf="email.errors?.['required']">
+                                <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes ingresar un correo electronico.</span>
+                                
+                              </div>      
+                              <div *ngIf="email.errors?.['email']">
+                                <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes ingresar un correo electronico valido.</span>
+                               
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="" class="form-label">Contraseña</label>
+                            <input type="text" formControlName="password" [(ngModel)]="user.password" class="form-control" [minlength]="8" maxlength="10" name="password" id="" value="" required> 
+                            <div class="ps-1" *ngIf="password.invalid && (password.dirty || password.touched)">
+                            <div *ngIf="password.errors?.['required']">
+                                <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Debes ingresar una contraseña.</span>
+                                
+                              </div>      
+                              <div *ngIf="password.errors?.['minlength']">
+                                <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> La contraseña debe tener entre 8 y 10 caracteres.</span>
+                               
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input class="form-check-input" formControlName="termsAndConditions" [(ngModel)]="user.termsAndConditions" type="checkbox" value="Acepto" name="terminosCondiciones" id="invalidCheck" required >
+                                <label class="form-check-label" for="invalidCheck">
+                                    Al hacer clic en "Registrarse", aceptas nuestros <a href="">Terminos y condiciones</a>, la <a href="">Política de privacidad y cookies.</a>
+                                </label>
+                                <div class="ps-1" *ngIf="termsAndConditions.invalid && (termsAndConditions.dirty || termsAndConditions.touched)">
+                                <div *ngIf="termsAndConditions.errors?.['required']">
+                                    <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Para crear una cuenta debes aceptar.</span>
+                                    
+                                  </div>      
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 d-grid">
+                            <button class="btn btn-primary" (click)="register()" role="button" type="submit">Registrarse</button>
+                        </div>
+
+                        <div class="my-3 d-flex justify-content-between">
+                            <a routerLink="/auth">Iniciar sesión</a>
+                            <a routerLink="/recover-password" class="">Olvide contraseña</a>
+                          </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
